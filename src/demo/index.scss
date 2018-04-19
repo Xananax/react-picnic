@@ -1,0 +1,54 @@
+@import '../index.scss';
+
+  header
+  { position: relative
+  //; height:25rem
+  ; & .hero
+    { width:100%
+    ; text-align:center
+    ; & h1
+      { font-size:4em
+      }
+    }
+  ; & .background-image
+    { height:0
+    ; width:100%
+    ; box-sizing: border-box
+    ; background-size:contain
+    ; background-position:center center
+    ; background-repeat: no-repeat
+    ; margin:3em 0
+    }
+  ; @media screen  and (max-width: 60em)
+    { height:3em
+    }
+  ; & nav
+    { position: absolute;
+    ; bottom:0
+    ; top:auto
+    ; background: transparent
+    ; height:4em
+    ; & .logo
+      { height:2.8em
+      ; margin-top:1em
+      }
+    }
+  ; @media screen  and (min-width: 60em)
+    { & .menu
+      { float: none
+      ; display: flex
+      ; & > * 
+        { flex-grow:1
+        ;
+        }
+      }
+    ; & .brand
+      { display:none
+      ;
+      }
+    ; & .background-image
+      { height:12rem
+      ;
+      }
+    }
+  }

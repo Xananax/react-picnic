@@ -1,0 +1,65 @@
+{
+  "name": "react-picnic",
+  "version": "0.0.1",
+  "description": "A beautiful CSS library to kickstart your React projects",
+  "private": false,
+  "main": "./dist/picnic.js",
+  "license": "MIT",
+  "homepage": "https://xananax.github.io/react-picnic",
+  "keywords": [
+    "react",
+    "css",
+    "styles",
+    "picnic"
+  ],
+  "author": "xananax@yelostudio.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xananax/react-picnic.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Xananax/react-picnic/issues"
+  },
+  "dependencies": {
+    "@types/classnames": "^2.2.3",
+    "classnames": "^2.2.5",
+    "node-sass-chokidar": "^1.2.2",
+    "picnic": "^6.5.0",
+    "react": "^16.3.2"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run start:react\" \"npm run start:css\"",
+    "start:css": "npm run css:watch",
+    "start:react": "react-scripts-ts start",
+    "build:pages": "react-scripts-ts build",
+    "build:doc": "typedoc --out ./build/doc --exclude \"**/demo/**.*\" --excludeExternals --theme default --ignoreCompilerErrors ./src",
+    "build:doc:real": "typedoc doesn't use the latest typescript, so we use --ignoreCompilerErrors above :(",
+    "build": "npm run build:pages && npm run build:doc && npm run css:build",
+    "css:build": "node-sass-chokidar src/ -o src/",
+    "css:watch": "npm run css:build && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "test": "react-scripts-ts test --env=jsdom",
+    "clean:build": "rimraf ./build",
+    "clean:doc": "rimraf ./build/doc",
+    "clean:dist": "rimraf ./dist",
+    "clean": "npm run clean:build && npm run clean:dist",
+    "ts": "tsc --moduleResolution Node --module commonjs --target es5 --outDir dist",
+    "compile": "npm run clean:dist && npm run ts",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/node": "^9.6.5",
+    "@types/react": "^16.3.11",
+    "@types/react-dom": "^16.0.5",
+    "concurrently": "^3.5.1",
+    "express": "^4.16.3",
+    "gh-pages": "^1.1.0",
+    "react-dom": "^16.3.2",
+    "react-scripts-ts": "^2.15.1",
+    "rimraf": "^2.6.2",
+    "typedoc": "^0.11.1",
+    "typescript": "^2.8.1"
+  }
+}
